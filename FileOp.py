@@ -15,4 +15,5 @@ def get_server_config() -> object:
         config[tag_server_ip] = j[tag_server_ip]
     if tag_server_port in j.keys():
         config[tag_server_port] = j[tag_server_port]
+    json_file.close()
     return config

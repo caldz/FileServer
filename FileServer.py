@@ -21,7 +21,7 @@ class Handler(socketserver.BaseRequestHandler):
         self.event = threading.Event()
         logging.info("新加入了一个连接{}".format(self.client_address))
         file_name = './{}_{}.txt'.format('tag', time.strftime("%Y-%m-%d-%H_%M_%S", time.localtime()))
-        self.file = open(file_name, mode='w', encoding='utf-8')
+        self.file = open(file_name, mode='wb')
 
     def handle(self):
         super().handle()
@@ -29,9 +29,9 @@ class Handler(socketserver.BaseRequestHandler):
         while not self.event.is_set():
             try:
                 print('block')
-                data = sk.recv(1024).decode()
+                data = sk.recv(1024)
                 if len(data) > 0:
-                    print('recv[{}]:{}'.format(len(data),data))
+                    print('recv[{}]:{}'.format(len(data), data))
                     self.file.write(data)
             except Exception as e:
                 logging.info(e)
@@ -49,7 +49,7 @@ class Handler(socketserver.BaseRequestHandler):
         self.file.close()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     server_config = FileOp.get_server_config()
     print(server_config)
     server = socketserver.ThreadingTCPServer((server_config['server_ip'], server_config['server_port']), Handler)
