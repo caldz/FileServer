@@ -3,3 +3,12 @@ https://github.com/caldz/FileServer.git
 
 创建SSH指令】
 ssh-keygen -t rsa -C "136820607@qq.com"
+
+提交指令】
+git commit -a -m "update"
+
+上传指令】
+git push https://github.com/caldz/FileServer.git
+
+同步指令】有时候需要先同步才能上传
+git pull
