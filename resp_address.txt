@@ -8,7 +8,7 @@ ssh-keygen -t rsa -C "136820607@qq.com"
 git commit -a -m "update"
 
 上传指令】
-git push https://github.com/caldz/FileServer.git
+git push
 
 同步指令】有时候需要先同步才能上传
 git pull
