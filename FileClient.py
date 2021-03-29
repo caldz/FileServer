@@ -1,6 +1,5 @@
 import socket
 from socket import socket
-from typing import Any, Tuple
 
 import FileOp
 from socket import *
@@ -8,16 +7,18 @@ from socket import *
 
 def read_file_lines(file_path):
     f = open(file_path, 'rb')
-    data = f.read(1024)
-    print(data)
+    data_list = []
+    while True:
+        data = f.read(512)
+        data_list.append(data)
+        print(data)
+        if len(data) == 0:
+            break
     f.close()
-    return data
+    return data_list
 
 
 class FileClient:
-    addr: tuple[Any, Any]
-    sock: socket
-
     def __init__(self):
         pass
 
@@ -28,8 +29,9 @@ class FileClient:
     def upload_file(self, file_path):
         sock = socket(AF_INET, SOCK_STREAM)
         sock.connect(self.addr)
-        data = read_file_lines(file_path)
-        sock.send(data)
+        data_list = read_file_lines(file_path)
+        for data in data_list:
+            sock.send(data)
         sock.close()
         pass
 
