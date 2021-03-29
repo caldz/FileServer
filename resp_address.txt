@@ -18,3 +18,10 @@ git clone https://github.com/caldz/FileServer.git
 
 查询信息】
 git config -l
+
+解决SSL报错方案】
+git config --global http.sslBackend "openssl"
+git config --global http.sslCAInfo "E:\software\tool\fileManager\Git\mingw64\ssl\cert.pem"
+使用代理的时候需要设置一下代理)
+git config --global http.proxy 127.0.0.1:7890
+git config --global https.proxy 127.0.0.1:7890
