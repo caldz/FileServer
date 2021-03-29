@@ -1,3 +1,5 @@
 仓库地址】
 https://github.com/caldz/FileServer.git
 
+创建SSH指令】
+ssh-keygen -t rsa -C "136820607@qq.com"
