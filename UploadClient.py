@@ -18,7 +18,7 @@ def read_file_lines(file_path):
     return data_list
 
 
-class ClientUpload:
+class UploadClient:
     def __init__(self):
         pass
 
@@ -39,4 +39,4 @@ class ClientUpload:
 if __name__ == '__main__':
     target_file = './test_log.txt'
     sc = FileOp.get_server_config()
-    ClientUpload().set_addr(sc['server_ip'], sc['server_port']).upload_file(target_file)
+    UploadClient().set_addr(sc['server_ip'], sc['server_port']).upload_file(target_file)
